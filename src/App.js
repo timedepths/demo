@@ -7,7 +7,10 @@ import {PostList,PostActions} from "./posts";
 import Dashboard from "./Dashboard";
 import authProvider from './authProvider';
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { State
+
+
+} from 'slate'
 
 const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
 // const App = () => (
