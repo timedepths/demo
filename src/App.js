@@ -7,10 +7,7 @@ import {PostList,PostActions} from "./posts";
 import Dashboard from "./Dashboard";
 import authProvider from './authProvider';
 import { Editor } from 'slate-react'
-import { State
-
-
-} from 'slate'
+import { Value } from 'slate'
 
 const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
 // const App = () => (
@@ -18,7 +15,7 @@ const dataProvider = jsonServerProvider('http://jsonplaceholder.typicode.com');
 //         <Resource name="posts" list={PostList} create={PostActions} edit={EditGuesser} />
 //         <Resource name="users" list={UserList} />
 //     </Admin>);
-const initialState = State.fromJSON({
+const initialState = Value.fromJSON({
     document: {
         nodes: [
             {
@@ -26,8 +23,8 @@ const initialState = State.fromJSON({
                 type: 'paragraph',
                 nodes: [
                     {
-                        kind: 'text',
-                        ranges: [
+                        object: 'text',
+                        leaves: [
                             {
                                 text: 'A line of text in a paragraph.'
                             }
@@ -41,17 +38,17 @@ const initialState = State.fromJSON({
 class App extends Component {
     // 设置应用创建时的初始状态。
     state = {
-        state: initialState
+        value: initialState
     }
 
     // 发生变更时，使用新的编辑器状态更新应用的 React 状态。
-    onChange = ({ state }) => {
-        this.setState({ state })
+    onChange = ({ value }) => {
+        this.setState({ value })
     }
   render() {
     return (
         <Editor
-            state={this.state.state}
+            value={this.state.value}
             onChange={this.onChange}
         />
         // <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
