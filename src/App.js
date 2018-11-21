@@ -3,7 +3,7 @@ import { Admin, Resource,EditGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import './App.css';
 import {UserList} from "./users";
-import {PostList,PostActions} from "./posts";
+import {PostList, PostCreate, PostEdit} from "./posts";
 import Dashboard from "./Dashboard";
 import authProvider from './authProvider';
 
@@ -29,7 +29,7 @@ class App extends React.Component {
     render() {
         return (
             <Admin dashboard={Dashboard} authProvider={authProvider} dataProvider={dataProvider}>
-                <Resource name="posts" list={PostList} create={PostActions} edit={EditGuesser} />
+                <Resource name="posts" list={PostList} create={PostCreate} edit={PostEdit} />
                 <Resource name="users" list={UserList} />
             </Admin>
               // {/*<div className="App">*/}
